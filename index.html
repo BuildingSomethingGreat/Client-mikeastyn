@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" data-mode="dark" data-theme="landing">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Mike Astyn | Website Design Directions</title>
+    <meta name="description" content="Two website design directions for Mike Astyn: Noir and Monolith. Each has an opener film, loader, and light and dark modes." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js', 'is-loading');
+        try {
+          var m = localStorage.getItem('astyn-mode');
+          if (m === 'light' || m === 'dark') d.dataset.mode = m;
+        } catch (e) {}
+        // If the script bundle never arrives, don't trap the visitor behind the loader.
+        setTimeout(function () {
+          if (!window.__astynBoot) {
+            d.classList.remove('js', 'is-loading');
+            d.classList.add('is-loaded');
+          }
+        }, 8000);
+      })();
+    </script>
+    <noscript>
+      <style>
+        .loader { display: none; }
+      </style>
+    </noscript>
+    <script type="module" src="/src/landing/landing.js"></script>
+  </head>
+  <body>
+    <div class="loader" data-loader aria-hidden="true">
+      <span class="logo-mark loader__mark" data-loader-mark></span>
+      <span class="loader__count" data-loader-count>000</span>
+    </div>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="top">
+      <a class="top__logo" href="/" aria-label="Mike Astyn design directions" data-intro="nav"><span class="logo-mark"></span></a>
+      <p class="top__title" data-intro="nav">Website Design Directions <span>Round 01</span></p>
+      <button class="mode" type="button" data-mode-toggle data-intro="nav">
+        <span class="mode__dot"></span><span data-mode-label>Light</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow" data-intro="eyebrow"><span class="red">//</span> Prepared for Mike Astyn</p>
+        <h1 class="intro__title" data-intro="title">Two directions. <em>One artist.</em></h1>
+        <div class="intro__grid">
+          <p class="intro__lede" data-intro="copy">
+            Both are built from your brief: luxury editorial, clean, masculine, sophisticated. Black and white, with
+            red reserved for the places the eye should land. Each one is a working site with the opener film, a loader,
+            your music, the 01.01.27 release party, a booking form, and light and dark modes.
+          </p>
+          <ul class="intro__brief" data-intro="copy" aria-label="The brief">
+            <li>Luxury editorial</li>
+            <li>Clean</li>
+            <li>Masculine</li>
+            <li>Sophisticated</li>
+            <li>Less is more</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="dirs" aria-label="Design directions">
+        <article class="dir">
+          <a class="dir__shot" href="/noir/" aria-label="Open direction 01, Noir" data-reveal="img">
+            <img class="dir__img dir__img--dark" src="/shots/noir-dark.webp" alt="Direction 01, Noir, dark mode home screen" width="1600" height="1000" />
+            <img class="dir__img dir__img--light" src="/shots/noir-light.webp" alt="Direction 01, Noir, light mode home screen" width="1600" height="1000" loading="lazy" />
+            <span class="dir__open" aria-hidden="true">View live <i>↗</i></span>
+          </a>
+          <div class="dir__body">
+            <p class="dir__n" data-reveal="fade">Direction 01</p>
+            <h2 class="dir__name" data-reveal="lines">Noir</h2>
+            <p class="dir__blurb" data-reveal="lines">
+              Your reference, refined. A quiet, cinematic layout that lets the photography lead: the film fills the
+              frame, your mark sits opposite, and tracked capitals with a high-contrast serif do the rest. Red shows up
+              only as hairlines, the play button and the calls to action.
+            </p>
+            <dl class="dir__spec" data-reveal="stagger">
+              <div><dt>Feels like</dt><dd>A fashion campaign lookbook</dd></div>
+              <div><dt>Type</dt><dd>Instrument Serif, Geist</dd></div>
+              <div><dt>Opener</dt><dd>Full-frame portrait film</dd></div>
+              <div><dt>Red</dt><dd>Line and accent</dd></div>
+            </dl>
+            <a class="btn" href="/noir/" data-reveal="fade">
+              <span class="btn__label">Open Direction 01</span>
+              <svg class="btn__arrow" viewBox="0 0 8 12" aria-hidden="true"><path d="M1 1l5 5-5 5" /></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="dir">
+          <a class="dir__shot" href="/monolith/" aria-label="Open direction 02, Monolith" data-reveal="img">
+            <img class="dir__img dir__img--dark" src="/shots/monolith-dark.webp" alt="Direction 02, Monolith, dark mode home screen" width="1600" height="1000" loading="lazy" />
+            <img class="dir__img dir__img--light" src="/shots/monolith-light.webp" alt="Direction 02, Monolith, light mode home screen" width="1600" height="1000" loading="lazy" />
+            <span class="dir__open" aria-hidden="true">View live <i>↗</i></span>
+          </a>
+          <div class="dir__body">
+            <p class="dir__n" data-reveal="fade">Direction 02</p>
+            <h2 class="dir__name" data-reveal="lines">Monolith</h2>
+            <p class="dir__blurb" data-reveal="lines">
+              The bolder read of the same brief. ASTYN set as one enormous wordmark with you standing in front of it,
+              small technical labels around the edges, and red used as light instead of line. It is meant to feel like
+              a campaign poster that moves.
+            </p>
+            <dl class="dir__spec" data-reveal="stagger">
+              <div><dt>Feels like</dt><dd>A campaign poster in motion</dd></div>
+              <div><dt>Type</dt><dd>Archivo Expanded, Geist Mono</dd></div>
+              <div><dt>Opener</dt><dd>Cut-out film over the wordmark</dd></div>
+              <div><dt>Red</dt><dd>Light and glow</dd></div>
+            </dl>
+            <a class="btn" href="/monolith/" data-reveal="fade">
+              <span class="btn__label">Open Direction 02</span>
+              <svg class="btn__arrow" viewBox="0 0 8 12" aria-hidden="true"><path d="M1 1l5 5-5 5" /></svg>
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="shared">
+        <header class="sec-head">
+          <span class="sec-head__mark" aria-hidden="true">//</span>
+          <h2 data-reveal="lines">In both directions</h2>
+        </header>
+        <ul class="shared__list" data-reveal="stagger">
+          <li>
+            <h3>Opener film</h3>
+            <p>A ten-second portrait loop of you on set: small movements, held poses, the way a shoot feels between frames.</p>
+          </li>
+          <li>
+            <h3>Loader and entrance</h3>
+            <p>A counted loader that lifts like a curtain, then type and image arrive in sequence.</p>
+          </li>
+          <li>
+            <h3>Dark first, light ready</h3>
+            <p>Dark is the default. The switch in the corner flips either direction to a light edition.</p>
+          </li>
+          <li>
+            <h3>Your real content</h3>
+            <p>Playable previews of your releases, the 01.01.27 countdown, and a booking form addressed to Mike Astyn Exp.</p>
+          </li>
+        </ul>
+        <p class="shared__note" data-reveal="fade">
+          Preview note: the photography here was rebuilt from the small reference image in your email, and the film was
+          generated from those stills. The final build uses your original photos.
+        </p>
+      </section>
+    </main>
+
+    <footer class="base">
+      <span>Mike Astyn</span>
+      <span class="base__line" aria-hidden="true"></span>
+      <span>Music Without Limits</span>
+    </footer>
+  </body>
+</html>

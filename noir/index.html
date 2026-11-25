@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" data-mode="dark" data-theme="noir">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Mike Astyn | Music. Vision. No Limits.</title>
+    <meta
+      name="description"
+      content="Mike Astyn is an artist driven by real experiences, raw emotion and an unapologetic sound. Listen, watch and book."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="/media/opener-noir-poster.webp" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js', 'is-loading');
+        try {
+          var m = localStorage.getItem('astyn-mode');
+          if (m === 'light' || m === 'dark') d.dataset.mode = m;
+        } catch (e) {}
+        // If the script bundle never arrives, don't trap the visitor behind the loader.
+        setTimeout(function () {
+          if (!window.__astynBoot) {
+            d.classList.remove('js', 'is-loading');
+            d.classList.add('is-loaded');
+          }
+        }, 8000);
+      })();
+    </script>
+    <noscript>
+      <style>
+        .loader { display: none; }
+      </style>
+    </noscript>
+    <script type="module" src="/src/noir/noir.js"></script>
+  </head>
+  <body>
+    <!-- Loader -->
+    <div class="loader" data-loader aria-hidden="true">
+      <div class="loader__center">
+        <span class="logo-mark loader__mark" data-loader-mark></span>
+      </div>
+      <div class="loader__foot">
+        <span class="loader__name">Mike Astyn</span>
+        <span class="loader__bar"><i data-loader-bar></i></span>
+        <span class="loader__count" data-loader-count>000</span>
+      </div>
+    </div>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav" data-nav>
+      <a class="nav__logo" href="#top" aria-label="Mike Astyn, back to top" data-intro="nav">
+        <span class="logo-mark"></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#top" class="nav__home" aria-current="true" data-intro="nav">Home</a>
+        <a href="#music" data-intro="nav">Music</a>
+        <a href="#about" data-intro="nav">About</a>
+        <a href="#booking" data-intro="nav">Contact</a>
+        <button class="mode" type="button" data-mode-toggle data-intro="nav">
+          <span class="mode__dot"></span><span data-mode-label>Light</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="top">
+        <div class="hero__media" data-hero-media>
+          <video
+            class="hero__video"
+            data-hero-video
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="/media/opener-noir-poster.webp"
+            aria-label="Mike Astyn on set, black-and-white portrait film"
+          >
+            <source src="/media/opener-noir-720.mp4" media="(max-width: 820px)" type="video/mp4" />
+            <source src="/media/opener-noir-1080.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="hero__content">
+          <h1 class="sr-only">Mike Astyn</h1>
+          <span class="logo-full hero__lockup" role="img" aria-label="Mike Astyn logo" data-intro="lockup"></span>
+          <p class="hero__name" aria-hidden="true" data-intro="lockup">Mike <em>Astyn</em></p>
+          <p class="hero__tag" data-intro="tag">
+            <span>Music</span><i aria-hidden="true"></i><span>Vision</span><i aria-hidden="true"></i><span>No Limits</span>
+          </p>
+          <a
+            class="btn"
+            href="https://music.apple.com/us/artist/mike-astyn/1451420860"
+            target="_blank"
+            rel="noopener"
+            data-intro="cta"
+          >
+            <span class="btn__label">Listen Now</span>
+            <svg class="btn__arrow" viewBox="0 0 8 12" aria-hidden="true"><path d="M1 1l5 5-5 5" /></svg>
+          </a>
+        </div>
+
+        <div class="hero__foot">
+          <span class="hero__scroll" data-intro="foot"><i aria-hidden="true"></i>Scroll</span>
+          <a class="hero__next" href="#event" data-intro="foot">
+            <span>01.01.27</span><span>Album Release Party</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Featured music -->
+      <section class="music" id="music">
+        <div class="music__main">
+          <header class="sec-head">
+            <span class="sec-head__mark" aria-hidden="true">//</span>
+            <h2 data-reveal="lines">Featured Music</h2>
+          </header>
+          <div class="rule" data-reveal="rule"></div>
+
+          <article
+            class="player"
+            data-player
+            data-title="Not Going Back (Live)"
+            data-src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7d/e9/fb/7de9fbce-a565-13b8-72bf-fc41066cad10/mzaf_15545560386970381447.plus.aac.p.m4a"
+            data-href="https://music.apple.com/us/album/not-going-back-live/1789263157?i=1789263159"
+          >
+            <a
+              class="player__art"
+              href="https://music.apple.com/us/album/not-going-back-live-single/1789263157"
+              target="_blank"
+              rel="noopener"
+              data-reveal="img"
+            >
+              <img src="/art/not-going-back.webp" alt="Not Going Back (Live) single artwork" width="900" height="900" loading="lazy" />
+            </a>
+            <div class="player__body">
+              <p class="eyebrow" data-reveal="fade">Latest Release</p>
+              <h3 class="player__title" data-reveal="lines">Not Going Back <span>(Live)</span></h3>
+              <p class="player__artist" data-reveal="fade" data-delay="0.1">Mike Astyn</p>
+              <div class="player__ctrl" data-reveal="fade" data-delay="0.2">
+                <button class="player__play" type="button" data-play>
+                  <svg viewBox="0 0 12 12" class="i-play" aria-hidden="true"><path d="M3 1.5v9l7.5-4.5z" /></svg>
+                  <svg viewBox="0 0 12 12" class="i-pause" aria-hidden="true"><path d="M2.5 1.5h2.5v9H2.5zM7 1.5h2.5v9H7z" /></svg>
+                </button>
+                <div class="player__track" data-seek>
+                  <span class="player__line"><i></i></span>
+                  <span class="wave" data-wave="44"></span>
+                </div>
+                <span class="player__time" data-time>Preview 0:30</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="rule" data-reveal="rule"></div>
+
+          <ol class="releases" data-reveal="stagger">
+            <li>
+              <a href="https://music.apple.com/us/album/not-going-back-live-single/1789263157" target="_blank" rel="noopener">
+                <span class="releases__n">01</span>
+                <span class="releases__t">Not Going Back (Live)</span>
+                <span class="releases__k">Single</span>
+                <span class="releases__y">2025</span>
+                <span class="releases__go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://music.apple.com/us/album/silent-night-feat-mike-astyn-single/1787943462" target="_blank" rel="noopener">
+                <span class="releases__n">02</span>
+                <span class="releases__t">Silent Night</span>
+                <span class="releases__k">Featured</span>
+                <span class="releases__y">2024</span>
+                <span class="releases__go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://music.apple.com/us/album/here-i-am-feat-mike-astyn/1519578905?i=1519579082" target="_blank" rel="noopener">
+                <span class="releases__n">03</span>
+                <span class="releases__t">Here I Am</span>
+                <span class="releases__k">Featured</span>
+                <span class="releases__y">2020</span>
+                <span class="releases__go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://music.apple.com/us/album/til-i-die-single/1451817223" target="_blank" rel="noopener">
+                <span class="releases__n">04</span>
+                <span class="releases__t">Til I Die</span>
+                <span class="releases__k">Single</span>
+                <span class="releases__y">2019</span>
+                <span class="releases__go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ol>
+
+          <div class="music__links" data-reveal="stagger">
+            <a class="tlink" href="https://music.apple.com/us/artist/mike-astyn/1451420860" target="_blank" rel="noopener">Apple Music</a>
+            <a class="tlink" href="https://youtube.com/@mikeastynsings" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
+
+        <figure class="music__figure" data-reveal="fade">
+          <img src="/media/profile-red.webp" alt="Mike Astyn in profile, lit in red" width="2000" height="1131" loading="lazy" data-parallax="5" />
+        </figure>
+      </section>
+
+      <!-- About -->
+      <section class="about" id="about">
+        <div class="about__text">
+          <header class="sec-head">
+            <span class="sec-head__mark" aria-hidden="true">//</span>
+            <h2 data-reveal="lines">About Mike Astyn</h2>
+          </header>
+          <p class="about__statement" data-reveal="lines">
+            This is more than music. <em>It’s life in motion.</em>
+          </p>
+          <p class="about__body" data-reveal="lines">
+            Mike Astyn is an artist driven by real experiences, raw emotion and an unapologetic sound. With a unique
+            blend of honesty and versatility, his music speaks to the journey, the grind and the growth.
+          </p>
+          <a class="btn" href="https://youtube.com/@mikeastynsings" target="_blank" rel="noopener" data-reveal="fade">
+            <span class="btn__label">Watch on YouTube</span>
+            <svg class="btn__arrow" viewBox="0 0 8 12" aria-hidden="true"><path d="M1 1l5 5-5 5" /></svg>
+          </a>
+        </div>
+        <figure class="about__figure">
+          <span class="about__bar" aria-hidden="true" data-reveal="rule"></span>
+          <div class="about__frame" data-reveal="img">
+            <img src="/media/portrait-bowed.webp" alt="Mike Astyn, head bowed, hand at his chin" width="1800" height="1195" loading="lazy" data-parallax="5" />
+          </div>
+        </figure>
+      </section>
+
+      <!-- Event -->
+      <section class="event" id="event">
+        <p class="eyebrow" data-reveal="fade"><span class="red">//</span> Next Date</p>
+        <h2 class="event__date" data-reveal="chars">01.01.27</h2>
+        <p class="event__name" data-reveal="lines">Album Release Party</p>
+        <dl class="event__count" data-countdown="2027-01-01T00:00:00" data-reveal="stagger">
+          <div><dd data-cd="days">00</dd><dt>Days</dt></div>
+          <div><dd data-cd="hours">00</dd><dt>Hours</dt></div>
+          <div><dd data-cd="mins">00</dd><dt>Minutes</dt></div>
+          <div><dd data-cd="secs">00</dd><dt>Seconds</dt></div>
+        </dl>
+        <a class="btn" href="#booking" data-reveal="fade">
+          <span class="btn__label">Request an Invite</span>
+          <svg class="btn__arrow" viewBox="0 0 8 12" aria-hidden="true"><path d="M1 1l5 5-5 5" /></svg>
+        </a>
+      </section>
+
+      <!-- Visuals -->
+      <section class="visuals" aria-label="Campaign imagery">
+        <figure class="visuals__a">
+          <div class="frame" data-reveal="img"><img src="/media/seated.webp" alt="Mike Astyn seated on a stool in the studio" width="1400" height="1750" loading="lazy" data-parallax="4" /></div>
+          <figcaption data-reveal="fade">Campaign / 01</figcaption>
+        </figure>
+        <figure class="visuals__b">
+          <div class="frame" data-reveal="img" data-delay="0.15"><img src="/media/detail-watch.webp" alt="Detail of tattooed hands adjusting a steel watch" width="1400" height="1750" loading="lazy" data-parallax="4" /></div>
+          <figcaption data-reveal="fade">Campaign / 02</figcaption>
+        </figure>
+      </section>
+
+      <!-- Booking -->
+      <section class="booking" id="booking">
+        <div class="booking__intro">
+          <header class="sec-head">
+            <span class="sec-head__mark" aria-hidden="true">//</span>
+            <h2 data-reveal="lines">Booking</h2>
+          </header>
+          <p class="booking__statement" data-reveal="lines">Bring the experience <em>to your stage.</em></p>
+          <dl class="booking__meta" data-reveal="stagger">
+            <div><dt>Booking</dt><dd>Mike Astyn Exp.</dd></div>
+            <div>
+              <dt>Email</dt>
+              <dd><a class="tlink" href="mailto:MikeAstynExp@gmail.com">MikeAstynExp@gmail.com</a></dd>
+            </div>
+            <div><dt>Next date</dt><dd>01.01.27, Album Release Party</dd></div>
+          </dl>
+        </div>
+
+        <form class="form" name="booking" method="POST" data-netlify="true" netlify-honeypot="company" data-booking="MikeAstynExp@gmail.com" data-reveal="stagger">
+          <input type="hidden" name="form-name" value="booking" />
+          <p class="sr-only"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off" /></label></p>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required placeholder="you@email.com" />
+          </label>
+          <label class="field">
+            <span>Event date</span>
+            <input type="date" name="date" />
+          </label>
+          <label class="field field--area">
+            <span>Event details</span>
+            <textarea name="details" rows="4" required placeholder="Venue, city, audience, set length"></textarea>
+          </label>
+          <div class="form__foot">
+            <button class="btn" type="submit">
+              <span class="btn__label">Send Inquiry</span>
+              <svg class="btn__arrow" viewBox="0 0 8 12" aria-hidden="true"><path d="M1 1l5 5-5 5" /></svg>
+            </button>
+            <p class="form__status" data-form-status role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot__row">
+        <span class="foot__name">Mike Astyn</span>
+        <span class="foot__line" aria-hidden="true" data-reveal="rule"></span>
+        <nav class="foot__social" aria-label="Listen and watch">
+          <a href="https://youtube.com/@mikeastynsings" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.800 19 12 19 12 19s6.2 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.800zM10 15V9l5.200 3z" /></svg>
+          </a>
+          <a href="https://music.apple.com/us/artist/mike-astyn/1451420860" target="_blank" rel="noopener" aria-label="Apple Music">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17.500V6.300l10-2v9.700a2.700 2.700 0 1 1-1.500-2.400V6.900L10.500 8.300v9.700A2.700 2.700 0 1 1 9 15.600z" /></svg>
+          </a>
+        </nav>
+        <span class="foot__red" aria-hidden="true"></span>
+        <span class="foot__tag">Music Without Limits</span>
+      </div>
+      <div class="foot__word" aria-hidden="true"><span data-fit>ASTYN</span></div>
+      <div class="foot__base">
+        <span>© 2026 Mike Astyn</span>
+        <a class="tlink" href="/">All design directions</a>
+        <a class="tlink" href="#top">Back to top</a>
+      </div>
+    </footer>
+  </body>
+</html>
