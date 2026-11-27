@@ -306,8 +306,17 @@ body {
 }
 
 .tile__arrow {
+  width: 10px;
+  height: 10px;
   margin-right: 5px;
-  font-weight: 700;
+  vertical-align: -0.05em;
+}
+
+.bar__link .ico {
+  width: 9px;
+  height: 9px;
+  margin-left: 2px;
+  vertical-align: 0;
 }
 
 .tile__help {

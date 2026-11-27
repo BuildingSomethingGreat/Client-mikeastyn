@@ -846,6 +846,13 @@ html.has-player main {
   transition: translate 0.2s, box-shadow 0.2s;
 }
 
+.gum__btn .ico {
+  width: 11px;
+  height: 11px;
+  margin-left: 4px;
+  vertical-align: 0;
+}
+
 .gum__btn--ghost {
   background: #fff;
   color: #000;

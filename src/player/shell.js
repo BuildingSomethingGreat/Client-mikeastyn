@@ -98,7 +98,7 @@ const SHELL = `
       </div>
     </div>
     <div class="gum__row">
-      <a class="gum__btn" data-buy-apple target="_blank" rel="noopener">Listen on Apple Music ↗</a>
+      <a class="gum__btn" data-buy-apple target="_blank" rel="noopener">Listen on Apple Music <i class="ico ico--ne" aria-hidden="true"></i></a>
       <button type="button" class="gum__btn gum__btn--ghost" data-close>Got it</button>
     </div>
   </div>

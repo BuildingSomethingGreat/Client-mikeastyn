@@ -92,10 +92,18 @@ html[data-mode='light'] {
   transition: background 0.45s cubic-bezier(0.22, 1, 0.36, 1), color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.cta i {
-  font-style: normal;
-  font-size: 13px;
+.cta .ico {
+  width: 11px;
+  height: 11px;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ulink .ico,
+.nav__listen .ico {
+  width: 9px;
+  height: 9px;
+  margin-left: 2px;
+  vertical-align: 0;
 }
 
 .cta--sm {
@@ -115,7 +123,7 @@ html[data-mode='light'] {
     color: #fff;
   }
 
-  .cta:hover i {
+  .cta:hover .ico {
     transform: rotate(45deg);
   }
 }

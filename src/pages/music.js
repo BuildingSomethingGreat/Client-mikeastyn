@@ -24,8 +24,8 @@ function rowHTML(t, i) {
     <span class="tl__year">${t.year}</span>
     <span class="tl__len">${fmtTime(t.previewLength || t.fullLength)}</span>
     <div class="tl__act">
-      ${t.buy?.available ? `<button class="cta cta--sm" type="button" data-buy="${t.id}"><span>Buy now</span><i aria-hidden="true">↗</i></button>` : ''}
-      <a class="tl__out" href="${t.apple}" target="_blank" rel="noopener" data-track="${t.id}" aria-label="Open ${esc(t.title)} in Apple Music">↗</a>
+      ${t.buy?.available ? `<button class="cta cta--sm" type="button" data-buy="${t.id}"><span>Buy now</span><i class="ico ico--ne" aria-hidden="true"></i></button>` : ''}
+      <a class="tl__out" href="${t.apple}" target="_blank" rel="noopener" data-track="${t.id}" aria-label="Open ${esc(t.title)} in Apple Music"><i class="ico ico--ne" aria-hidden="true"></i></a>
     </div>
   </li>`;
 }

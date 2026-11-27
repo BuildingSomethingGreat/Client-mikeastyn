@@ -336,8 +336,12 @@ html.is-audio-playing .np__art img {
   height: 36px;
   border-radius: 50%;
   box-shadow: inset 0 0 0 1px var(--ink-3);
-  font-size: 13px;
   transition: background 0.4s, color 0.4s, box-shadow 0.4s;
+}
+
+.tl__out .ico {
+  width: 11px;
+  height: 11px;
 }
 
 @media (hover: hover) {
@@ -426,7 +430,7 @@ html.is-audio-playing .np__art img {
     padding: 10px 12px;
   }
 
-  .tl__act .cta--sm i {
+  .tl__act .cta--sm .ico {
     display: none;
   }
 

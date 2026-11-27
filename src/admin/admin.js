@@ -130,7 +130,7 @@ function renderTiles(model) {
     } else {
       const up = d >= 0;
       delta.classList.add(Math.abs(d) < 0.005 ? 'is-flat' : up ? 'is-up' : 'is-down');
-      const arrow = el('span', 'tile__arrow', Math.abs(d) < 0.005 ? '→' : up ? '↑' : '↓');
+      const arrow = el('i', `ico ico--${Math.abs(d) < 0.005 ? 'e' : up ? 'n' : 's'} tile__arrow`);
       arrow.setAttribute('aria-hidden', 'true');
       delta.append(arrow, `${up ? '+' : '−'}${Math.abs(Math.round(d * 100))}% vs previous ${model.days} days`);
     }

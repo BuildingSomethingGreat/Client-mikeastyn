@@ -273,6 +273,11 @@
   transition: background 0.4s, color 0.4s, box-shadow 0.4s;
 }
 
+.lb__nav .ico {
+  width: 15px;
+  height: 15px;
+}
+
 .lb__nav--prev {
   left: var(--gut);
 }

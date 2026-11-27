@@ -68,8 +68,8 @@ export function initGallery(main, { lenis } = {}) {
   lb.innerHTML = `
     <button type="button" class="lb__close" data-lb="close">Close ${ICONS.close}</button>
     <figure class="lb__fig"><img class="lb__img" alt="" /></figure>
-    <button type="button" class="lb__nav lb__nav--prev" data-lb="prev" aria-label="Previous photo">←</button>
-    <button type="button" class="lb__nav lb__nav--next" data-lb="next" aria-label="Next photo">→</button>
+    <button type="button" class="lb__nav lb__nav--prev" data-lb="prev" aria-label="Previous photo"><i class="ico ico--w" aria-hidden="true"></i></button>
+    <button type="button" class="lb__nav lb__nav--next" data-lb="next" aria-label="Next photo"><i class="ico ico--e" aria-hidden="true"></i></button>
     <p class="lb__count" aria-live="polite"><span data-lb-n>01</span> / ${pad(items.length)}</p>`;
   document.body.append(lb);
   const lbImg = lb.querySelector('.lb__img');

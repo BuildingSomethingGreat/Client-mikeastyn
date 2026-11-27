@@ -39,8 +39,8 @@ function rowHTML(t, i) {
           <div class="row__wave" data-pl-seek><span class="wave" data-wave="84" data-wave-seed="${t.id}"></span></div>
         </div>
         <div class="row__links">
-          ${t.buy?.available ? `<button class="cta cta--sm" type="button" data-buy="${t.id}"><span>Buy now</span><i aria-hidden="true">↗</i></button>` : ''}
-          <a class="ulink" href="${t.apple}" target="_blank" rel="noopener" data-track="${t.id}">Apple Music ↗</a>
+          ${t.buy?.available ? `<button class="cta cta--sm" type="button" data-buy="${t.id}"><span>Buy now</span><i class="ico ico--ne" aria-hidden="true"></i></button>` : ''}
+          <a class="ulink" href="${t.apple}" target="_blank" rel="noopener" data-track="${t.id}">Apple Music <i class="ico ico--ne" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
