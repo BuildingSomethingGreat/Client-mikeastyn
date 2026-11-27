@@ -1,5 +1,5 @@
 // Shared behaviour for every page: colour mode, smooth scroll, preloading,
-// scroll-driven reveals, the audio preview player, countdown and booking form.
+// scroll-driven reveals, waveforms, countdown and booking form.
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -262,9 +262,10 @@ export function initReveals(scope = document) {
 
 /* ───────────────────────── Fit-to-width wordmarks ───────────────────────── */
 
-export function initFit() {
-  const els = [...document.querySelectorAll('[data-fit]')];
-  if (!els.length) return;
+/** Scales each [data-fit] so its text spans its parent. Returns a disposer. */
+export function initFit(scope = document) {
+  const els = [...scope.querySelectorAll('[data-fit]')];
+  if (!els.length) return () => {};
   const fit = () => {
     els.forEach((el) => {
       const box = el.parentElement.getBoundingClientRect().width;
@@ -276,28 +277,39 @@ export function initFit() {
   fit();
   document.fonts?.ready.then(fit);
   let raf;
-  window.addEventListener('resize', () => {
+  const onResize = () => {
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(fit);
-  });
+  };
+  window.addEventListener('resize', onResize);
+  return () => window.removeEventListener('resize', onResize);
 }
 
 /* ───────────────────────── Section-aware nav ───────────────────────── */
 
-export function initNavSpy() {
-  const links = [...document.querySelectorAll('[data-nav] a[href^="#"]')];
+/** Marks the nav link for the section in view (home) or for the page itself. */
+export function initNavSpy(page) {
+  const links = [...document.querySelectorAll('[data-nav] a')];
+  links.forEach((l) => l.removeAttribute('aria-current'));
+  const mark = (a) => {
+    links.forEach((l) => l.removeAttribute('aria-current'));
+    a?.setAttribute('aria-current', 'true');
+  };
+  const own = links.find((a) => a.dataset.navPage === page);
+  if (own) mark(own);
+
   links.forEach((a) => {
-    const target = document.querySelector(a.getAttribute('href'));
+    const url = new URL(a.href, location.href);
+    if (url.pathname !== location.pathname || !url.hash) return;
+    const target = document.querySelector(url.hash);
     if (!target) return;
     ScrollTrigger.create({
       trigger: target,
       start: 'top 55%',
       end: 'bottom 55%',
       onToggle: (self) => {
-        if (self.isActive) {
-          links.forEach((l) => l.removeAttribute('aria-current'));
-          a.setAttribute('aria-current', 'true');
-        }
+        if (self.isActive) mark(a);
+        else if (a.getAttribute('aria-current')) mark(own);
       },
     });
   });
@@ -305,6 +317,7 @@ export function initNavSpy() {
 
 /** Tuck the fixed nav away while reading down the page; bring it back on the way up. */
 export function initNavAutoHide() {
+  root.classList.remove('nav-hidden');
   ScrollTrigger.create({
     start: 0,
     end: 'max',
@@ -315,112 +328,36 @@ export function initNavAutoHide() {
   });
 }
 
-/* ───────────────────────── Audio previews ───────────────────────── */
+/* ───────────────────────── Waveform bars ───────────────────────── */
 
-const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-
-function buildWave(el) {
-  const count = parseInt(el.dataset.wave || '56', 10);
-  let seed = 7;
-  const rand = () => {
-    seed = (seed * 16807) % 2147483647;
-    return seed / 2147483647;
-  };
-  const bars = Array.from({ length: count }, (_, i) => {
-    const env = Math.sin((i / (count - 1)) * Math.PI) ** 0.7;
-    return Math.max(0.08, env * (0.35 + rand() * 0.65));
-  });
-  const layer = (cls) =>
-    `<span class="wave__layer ${cls}" aria-hidden="true">${bars
-      .map((h) => `<i style="--h:${h.toFixed(3)}"></i>`)
-      .join('')}</span>`;
-  el.innerHTML = layer('wave__base') + layer('wave__fill');
-}
-
-export function initPlayers() {
-  const players = [...document.querySelectorAll('[data-player]')];
-  if (!players.length) return;
-  document.querySelectorAll('[data-wave]').forEach(buildWave);
-
-  const audio = new Audio();
-  audio.preload = 'none';
-  let active = null;
-  let raf;
-
-  const paint = () => {
-    if (!active) return;
-    const d = audio.duration || 30;
-    active.style.setProperty('--p', Math.min(1, audio.currentTime / d).toFixed(4));
-    const t = active.querySelector('[data-time]');
-    if (t) t.textContent = `${fmt(audio.currentTime)} / ${fmt(d)}`;
-  };
-  const loop = () => {
-    paint();
-    raf = requestAnimationFrame(loop);
-  };
-  const setPlaying = (p, on) => {
-    p.classList.toggle('is-playing', on);
-    const b = p.querySelector('[data-play]');
-    b.setAttribute('aria-pressed', String(on));
-    b.setAttribute('aria-label', `${on ? 'Pause' : 'Play'} preview: ${p.dataset.title}`);
-  };
-  const clear = (p) => {
-    setPlaying(p, false);
-    p.style.setProperty('--p', '0');
-    const t = p.querySelector('[data-time]');
-    if (t) t.textContent = t.dataset.idle || '';
-  };
-
-  players.forEach((p) => {
-    const t = p.querySelector('[data-time]');
-    if (t) t.dataset.idle = t.textContent;
-    setPlaying(p, false);
-
-    p.querySelector('[data-play]').addEventListener('click', () => {
-      if (active === p && !audio.paused) {
-        audio.pause();
-        return;
-      }
-      if (active !== p) {
-        if (active) clear(active);
-        active = p;
-        audio.src = p.dataset.src;
-      }
-      audio.play().catch(() => {
-        // Preview unavailable: send them to the full track instead.
-        if (p.dataset.href) window.open(p.dataset.href, '_blank', 'noopener');
-      });
+/** Draws the decorative waveform into every [data-wave]; progress is the --p variable. */
+export function buildWaves(scope = document) {
+  scope.querySelectorAll('[data-wave]').forEach((el) => {
+    const count = parseInt(el.dataset.wave || '56', 10);
+    // Seeded from the element's own key so each song keeps a distinct, stable shape.
+    let seed = [...(el.dataset.waveSeed || 'astyn')].reduce((n, c) => (n * 31 + c.charCodeAt(0)) % 2147483647, 7) || 7;
+    const rand = () => {
+      seed = (seed * 16807) % 2147483647;
+      return seed / 2147483647;
+    };
+    const bars = Array.from({ length: count }, (_, i) => {
+      const env = Math.sin((i / (count - 1)) * Math.PI) ** 0.7;
+      return Math.max(0.08, env * (0.35 + rand() * 0.65));
     });
-
-    const seek = p.querySelector('[data-seek]');
-    seek?.addEventListener('click', (e) => {
-      if (active !== p || !audio.duration) return;
-      const r = seek.getBoundingClientRect();
-      audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
-      paint();
-    });
-  });
-
-  audio.addEventListener('play', () => {
-    setPlaying(active, true);
-    cancelAnimationFrame(raf);
-    loop();
-  });
-  audio.addEventListener('pause', () => {
-    setPlaying(active, false);
-    cancelAnimationFrame(raf);
-  });
-  audio.addEventListener('ended', () => {
-    cancelAnimationFrame(raf);
-    clear(active);
-    audio.currentTime = 0;
+    const layer = (cls) =>
+      `<span class="wave__layer ${cls}" aria-hidden="true">${bars
+        .map((h) => `<i style="--h:${h.toFixed(3)}"></i>`)
+        .join('')}</span>`;
+    el.innerHTML = layer('wave__base') + layer('wave__fill');
   });
 }
 
 /* ───────────────────────── Countdown ───────────────────────── */
 
-export function initCountdown() {
-  document.querySelectorAll('[data-countdown]').forEach((el) => {
+/** Returns a disposer that stops the clocks. */
+export function initCountdown(scope = document) {
+  const timers = [];
+  scope.querySelectorAll('[data-countdown]').forEach((el) => {
     const target = new Date(el.dataset.countdown).getTime();
     const slot = (k) => el.querySelector(`[data-cd="${k}"]`);
     const put = (k, v) => {
@@ -435,14 +372,15 @@ export function initCountdown() {
       put('secs', Math.floor(d / 1e3) % 60);
     };
     tick();
-    setInterval(tick, 1000);
+    timers.push(setInterval(tick, 1000));
   });
+  return () => timers.forEach(clearInterval);
 }
 
 /* ───────────────────────── Booking form ───────────────────────── */
 
-export function initForms() {
-  document.querySelectorAll('form[data-booking]').forEach((form) => {
+export function initForms(scope = document) {
+  scope.querySelectorAll('form[data-booking]').forEach((form) => {
     const status = form.querySelector('[data-form-status]');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

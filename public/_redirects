@@ -1,0 +1,5 @@
+# Old preview paths now live at the root.
+/monolith/*   /   301
+/noir/*       /   301
+/music        /music/   301
+/admin        /admin/   301

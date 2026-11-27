@@ -103,6 +103,11 @@ button {
   outline-offset: 4px;
 }
 
+/* `hidden` must win over any component's own display value. */
+[hidden] {
+  display: none !important;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
